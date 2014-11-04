@@ -1,0 +1,17 @@
+# 42.
+
+name: storm_py
+
+workers: 1
+
+topology:
+
+    - spout:
+        name: a_spout
+        module: storm_py.dummy_spout
+
+    - bolt:
+        name: a_bolt
+        module: storm_py.dummy_bolt
+        groupings:
+            - shuffle_grouping: a_spout
